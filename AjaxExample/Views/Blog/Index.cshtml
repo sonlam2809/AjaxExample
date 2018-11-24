@@ -1,0 +1,33 @@
+﻿
+<form method="post" action="">
+    <label>Title</label>
+    <input type="text" id="title" name="title" />
+    <br />
+    <label>Url</label>
+    <input type="text" id="url" name="url" />
+    <br />
+    <input type="submit" value="Submit" id="save"/>
+</form>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#save').click(function () {
+                var model = {
+                    Title: $("#title").val(),
+                    Url: $("#url").val()
+                }
+                var url = "@Url.Action("SaveData", "Blog")";
+                $.ajax({
+                    type: "POST",
+                    data: JSON.stringify(model),
+                    url: url,
+                    contentType: "application/json",
+                    success: function (data) {
+                        alert(data);
+                    }
+                })
+            });
+        });  
+    </script>
+}
