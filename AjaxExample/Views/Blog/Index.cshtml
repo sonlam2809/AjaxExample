@@ -1,7 +1,7 @@
 ﻿
-<form method="post" action="">
+<form method="post" action="" id="form">
     <label>Title</label>
-    <input type="text" id="title" name="title" />
+    <input type="text" id="title" name="title111" />
     <br />
     <label>Url</label>
     <input type="text" id="url" name="url" />
@@ -11,7 +11,7 @@
 
 @section Scripts {
     <script type="text/javascript">
-        $(document).ready(function () {
+        @*$(document).ready(function () {
             $('#save').click(function () {
                 var model = {
                     Title: $("#title").val(),
@@ -28,6 +28,16 @@
                     }
                 })
             });
-        });  
+        });*@  
+
+        $(document).ready(function () {
+            $('#save').click(function () {
+                var str = $('#form').serialize();
+                var url = "@Url.Action("Save","Blog")";
+                $.post(url, str).done(function (response) {
+                    console.log(JSON.stringify(response));
+                })
+            });
+        });
     </script>
 }

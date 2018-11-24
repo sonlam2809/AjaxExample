@@ -9,6 +9,7 @@ namespace AjaxExample.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string Title111 { get; set; }
         public string Url { get; set; }
     }
 }

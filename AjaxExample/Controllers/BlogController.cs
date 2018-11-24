@@ -19,12 +19,24 @@ namespace AjaxExample.Controllers
         {
             return View();
         }
+
+        public string GetContent(string id, string name)
+        {
+            return id + name;
+        }
+
+
         [HttpPost]
         public ActionResult SaveData([FromBody]Blog blog)
         {
             dbContext.Add(blog);
             dbContext.SaveChanges();
             return View(blog);
+        }
+        [HttpPost]
+        public ActionResult Save(Blog req)
+        {
+            return View();
         }
     }
 }
